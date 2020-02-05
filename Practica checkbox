@@ -1,0 +1,46 @@
+package com.example.cecid.practica_checkbox;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+    private EditText et1,et2;
+    private CheckBox check1,check2;
+    private TextView tv;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        et1=(EditText)findViewById(R.id.txt_valor1);
+        et2=(EditText)findViewById(R.id.txt_valor2);
+        check1=(CheckBox)findViewById(R.id.check_suma);
+        check2=(CheckBox)findViewById(R.id.check_resta);
+        tv=(TextView)findViewById(R.id.textView);
+    }
+
+    public void Calular(View view){
+        String Valor1_string=et1.getText().toString();
+        String Valor2_string=et2.getText().toString();
+
+        int Valor1_int=Integer.parseInt(Valor1_string);
+        int Valor2_int=Integer.parseInt(Valor2_string);
+
+        String resultado="";
+        if(check1.isChecked()==true){
+            int suma=Valor1_int+Valor2_int;
+            resultado=" La suma es: "+suma+ "/";
+        }
+        if(check2.isChecked()==true){
+            int resta=Valor1_int-Valor2_int;
+            resultado = resultado+" La resta es: "+resta;
+        }
+        tv.setText(resultado);
+
+    }
+}
